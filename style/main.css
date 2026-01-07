@@ -1,0 +1,101 @@
+
+@import url('utility/fonts.css');
+
+
+:root{
+    --primaryColor : hsl(243, 23%, 30%);
+    --whiteColor : hsl(0, 0%, 100%);
+
+
+    --border-radius:0.5rem;
+}
+
+body{
+    color: var(--whiteColor);
+    background: hsl(243, 96%, 9%);
+    padding: 1rem;
+    
+}
+.topBarWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.topBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 60rem;
+    width: 100%;
+}
+
+.logo > img{
+    width: 7rem;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.title > h1{
+    font-family:'Bricolage Grotesque';
+    font-weight: 600;
+    font-size: 3rem;
+    text-align: center;
+}
+
+
+.searchSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.searchBar{
+    border-radius: var(--border-radius);
+    background: var(--primaryColor);
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+    max-width: 30rem;
+}
+
+.searchInput{
+    background-color: var(--primaryColor);
+    border: none;
+    width: 100%;
+}
+.searchInput::placeholder{
+    color: hsl(250, 6%, 70%);
+    font-size: 1rem;
+    font-weight: 700;
+    
+}
+
+
+
+.searchBtn{
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--whiteColor);
+    background: hsl(233, 67%, 56%);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: 100%;
+    max-width: 25rem;
+}
+
+@media (min-width: 60rem) {
+    .searchBtn{
+        width: 5rem;
+    }
+    .logo > img{
+        width: 10rem;
+    }
+}

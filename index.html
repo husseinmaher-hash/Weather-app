@@ -2,36 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Now</title>
-    <link rel="stylesheet" href="style.css">
+    
+    
+    <link rel="stylesheet" href="style/main.css">
+    
+    <!-- meta data -->
+    <meta name="keywords" content="weather,sun,whether today?,raining,day forecast">
+    <meta name="description" content="see the weather for all weeks ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
 
-    <header class="topBar">
-        <div class="logo">
-            <img src="#" alt="Weather App Icon">
-        </div>
-
-        <h1 class="appTitle">Weather Now</h1>
-
-        <div class="controls">
-            <select class="unitsSelect">
-                <option value="units">Units</option>
-            </select>
-        </div>
+    <header  class="topBarWrapper">
+        <section class="topBar">
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt="Weather App Icon">
+            </div>
+            
+            <div class="controls">
+                <select class="unitsSelect">
+                    <option value="units">Units</option>
+                </select>
+            </div>
+        </section>
     </header>
 
 
-
-    <h1> How's the sky looking today?</h1>
+    <div class="title">
+        <h1> How's the sky looking today?</h1>
+    </div>
 
 
     <section class="searchSection">
-
-        <input id="searchInput" placeholder="Search for a place..." >
+        <div class="searchBar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input class="searchInput" placeholder="Search for a place..." >
+        </div>
+        
         <button class="searchBtn">Search</button>
     </section>
 
