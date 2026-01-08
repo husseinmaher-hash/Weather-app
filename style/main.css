@@ -6,7 +6,7 @@
     --primaryColor : hsl(243, 23%, 30%);
     --whiteColor : hsl(0, 0%, 100%);
 
-
+    
     --border-radius:0.5rem;
 }
 
@@ -14,7 +14,7 @@ body{
     color: var(--whiteColor);
     background: hsl(243, 96%, 9%);
     padding: 1rem;
-    
+    margin: 0;
 }
 .topBarWrapper{
     display: flex;
@@ -30,7 +30,7 @@ body{
 }
 
 .logo > img{
-    width: 7rem;
+    width: 9rem;
 }
 
 .title {
@@ -89,4 +89,112 @@ body{
     cursor: pointer;
     width: 100%;
     max-width: 25rem;
+    font-weight: 500;
+}
+
+
+.mainLayout{
+    margin-top: 2rem;
+    background: red;
+}
+
+.heroSection{
+    background: magenta;
+}
+
+
+
+
+
+.card {
+    position: relative;
+}
+
+.card > img {
+    width: 100%;
+    display: block;
+}
+
+.currentInfo {
+    display: grid;
+    justify-content: center;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    text-align: center;
+
+
+
+    color: var(--whiteColor);
+    z-index: 10;
+
+}
+
+.temperatureDegree{
+    font-size: 6rem;
+    font-weight: 600;
+}
+
+.sunIcon{
+    width: 8rem;;
+}
+
+
+
+
+
+
+
+
+
+.unitsSelect {
+    background-color: var(--primaryColor);
+    color: var(--whiteColor);
+    border: 1px solid bisque; 
+    border-radius: var(--border-radius);
+    height: 2.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-size: 1.5rem;
+    min-width: 8rem;
+}
+
+.unitsSelect > optgroup {
+    background: var(--primaryColor);
+    padding: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.unitsSelect > option {
+    background: var(--primaryColor);
+    color: var(--whiteColor);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 60rem) {
+    .searchBtn{
+        width: 5rem;
+    }
+    .logo > img{
+        width: 10rem;
+    }
 }

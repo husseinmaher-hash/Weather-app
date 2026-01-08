@@ -29,7 +29,23 @@
             
             <div class="controls">
                 <select class="unitsSelect">
-                    <option value="units">Units</option>
+                    <!-- <img src="/assets/images/icon-units.svg" alt="">  -->
+                    <option value=""> Units</option>
+                    <hr>
+                    <optgroup label="Temperature">
+                        <option value="c">Celsius (°C)</option>
+                        <option value="F">Fahrenheit(°F)</option>
+                    </optgroup>
+                    <hr>
+                    <optgroup label="Wind Speed">
+                        <option value="Km">km/h</option>
+                        <option value="Mph">mph</option>
+                    </optgroup>
+                    <hr>
+                    <optgroup label="Precipitation">
+                        <option value="mm">Millimeters (mm)</option>
+                        <option value="mm">Millimeters (mm)</option>
+                        </optgroup>
                 </select>
             </div>
         </section>
@@ -52,60 +68,62 @@
 
 
     <main class="mainLayout">
+        <div class="heroSection">
 
-        <section class="card">
-
-            <div class="currentInfo">
-
-                <div class="locationBlock">
-                    <h2 class="placeName">Amman, Jordan</h2>
-                    <p  class="currentDate">Tuesday, Aug 5,2025</p>
+            <section class="card">
+                    
+                    <img src="../assets/images/bg-today-small.svg" alt="whether background ">
+                    <div class="currentInfo">
+                        <div class="locationBlock">
+                        <h2 class="placeName">Amman, Jordan</h2>
+                        <p  class="currentDate">Tuesday, Aug 5,2025</p>
+                    </div>
+                    
+                    <div class="tempBlock">
+                        <img  class="sunIcon" src="assets/images/icon-sunny.webp" alt="sun icon">
+                        <span class="temperatureDegree">20°</span>
+                    </div>
+                    
                 </div>
-
-                <div class="tempBlock">
-                    <img  class="sunIcon" src="">
-                    <span class="temperatureDegree">20°</span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-
+                
+            </section>
+        
+        
+        
+        
         <section class="metricsGrid">
-
+            
             <div class="metricBox">
                 <p>Feels Like</p>
                 <span id="feelsLikeValue">18°</span>
             </div>
-
-
+            
+            
             <div class="metricBox">
                 <p>Humidity</p>
                 <span id="humidityValue">46%</span>
             </div>
-
-
+            
+            
             <div class="metricBox">
                 <p>Wind</p>
                 <span id="windSpeedValue">14 km/h</span>
             </div>
-
-
+            
+            
             <div class="metricBox">
                 <p>Precipitation</p>
                 <span id="precipValue">0 mm</span>
             </div>
 
         </section>
-
-
-
-
+        
+    </div>
+        
+        
+        
         <section class="dailyForecastSection">
-
+            
             <h2 class="sectionTitle">Day Forecast</h2>
 
             <div class="dailyRow">
