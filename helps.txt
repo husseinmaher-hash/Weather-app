@@ -1,0 +1,1 @@
+tsc app.ts --target es6 --outDir js

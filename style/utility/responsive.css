@@ -1,1 +1,38 @@
+@media (min-width: 40rem) {
+    .searchBtn{
+        width: 5rem;
+    }
+    .logo > img{
+        width: 10rem;
+    }
+    
+    .card {
+        background-image: url("../../assets/images/bg-today-large.svg");
+    }
+    
+    
+    .temperatureDegree{
+        font-size: 7rem;
+    }
+    .metricsGrid{
+        grid-template-columns: repeat(3,minmax(2rem,1fr)) ;
+    }
+    .dailyRow{
+        grid-template-columns: repeat(5,minmax(2rem,1fr)) ;
+    }
+}
 
+
+
+@media (min-width: 60rem) {
+    .metricsGrid{
+        grid-template-columns: repeat(4,minmax(2rem,1fr)) ;
+    }
+    .dailyRow{
+        grid-template-columns: repeat(7,minmax(2rem,1fr)) ;
+    }
+    .mainLayout{
+        display: flex;
+        gap: 2rem;
+    }
+}

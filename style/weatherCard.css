@@ -1,0 +1,70 @@
+
+
+.mainLayout{
+    margin-top: 2rem;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+.card {
+    background-image: url("../assets/images/bg-today-small.svg");
+    background-size: cover;      
+    background-position: center; 
+    border-radius: var(--border-radius);
+    padding: 1rem;               
+    
+    max-width: var(--maxWidth);
+}
+
+
+
+.currentInfo {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: var(--whiteColor);
+
+}
+
+.temperatureDegree{
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+.sunIcon{
+    width: 8rem;;
+}
+
+
+
+.metricsGrid{
+    margin: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(2rem,1fr)) ;
+}
+.metricBox{
+    margin: 0.5rem;
+    background: var(--primaryColor);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    font-family: 'DM Sans';
+    text-align: start;
+
+
+    border: 2px solid var(--Neutral600);
+}
+
+.metricBoxTitles{
+    color: var(--offPrimaryColor);
+    margin: 0;
+    margin-bottom: 2rem;
+}
+.metricBoxValues{
+    font-size: 1.5rem;
+}

@@ -1,0 +1,77 @@
+.topBarWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.topBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--maxWidth);
+    width: 100%;
+}
+
+.logo > img{
+    width: 9rem;
+}
+
+.unitsWrapper {
+    position: relative;
+}
+
+.unitsToggleBtn {
+    background: var(--secondaryColors);
+    color: var(--whiteColor);
+    border: 1px solid var(--offPrimaryColor);
+
+    padding: 0.6rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.2rem;
+}
+
+.unitsDropdown {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+    right: 0.4rem;
+    width: 210px;
+    background: var(--primaryColor);
+    border: 1px solid var(--offPrimaryColor);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    z-index: 1;
+}
+
+
+
+#systemToggleBtn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--offPrimaryColor);
+    color: var(--whiteColor);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 0.7rem;
+    cursor: pointer;
+}
+
+.groupLabel {
+    color: var(--offPrimaryColor);
+    font-size: 0.7rem;
+}
+
+.unitItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--neutral200);
+}
+

@@ -12,10 +12,12 @@
     <meta name="description" content="see the weather for all weeks ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+
+
+
+    <link rel="icon" href="data:,">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
     
-    <!-- Font Awesome for icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
@@ -27,27 +29,56 @@
                 <img src="assets/images/logo.svg" alt="Weather App Icon">
             </div>
             
-            <div class="controls">
-                <select class="unitsSelect">
-                    <!-- <img src="/assets/images/icon-units.svg" alt="">  -->
-                    <option value=""> Units</option>
-                    <hr>
-                    <optgroup label="Temperature">
-                        <option value="c">Celsius (°C)</option>
-                        <option value="F">Fahrenheit(°F)</option>
-                    </optgroup>
-                    <hr>
-                    <optgroup label="Wind Speed">
-                        <option value="Km">km/h</option>
-                        <option value="Mph">mph</option>
-                    </optgroup>
-                    <hr>
-                    <optgroup label="Precipitation">
-                        <option value="mm">Millimeters (mm)</option>
-                        <option value="mm">Millimeters (mm)</option>
-                        </optgroup>
-                </select>
+            
+        <div class="unitsWrapper">
+            <button class="unitsToggleBtn" id="unitsToggleBtn">
+                
+                <img src="assets/images/icon-units.svg" alt="units icons"> 
+                <span> 
+                    Units 
+                <img src="assets/images/icon-dropdown.svg" alt="drop down icons"> 
+                </span>
+            </button>
+
+            <div class="unitsDropdown" id="unitsDropdown">
+                <div class="dropdownHeader">
+                    <button id="systemToggleBtn">Switch to Imperial</button>
+                </div>
+
+                <div class="unitGroup">
+                    <h4 class="groupLabel">Temperature</h4>
+                    <div class="unitItem active" data-unit="celsius" data-unit-type="temp">
+                        <span>Celsius (°C)</span>
+                    </div>
+                    <div class="unitItem" data-unit="fahrenheit" data-unit-type="temp">
+                        <span>Fahrenheit (°F)</span>
+                    </div>
+                </div>
+
+                <div class="unitGroup">
+                    <h4 class="groupLabel">Wind Speed</h4>
+                    <div class="unitItem active" data-unit="kmh" data-unit-type="wind">
+                        <span>km/h</span>
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div class="unitItem" data-unit="mph" data-unit-type="wind">
+                        <span>mph</span>
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+
+                <div class="unitGroup">
+                <h4 class="groupLabel">Precipitation</h4>
+                    <div class="unitItem active" data-unit="mm" data-unit-type="precip">
+                        <span>Millimeters (mm)</span>
+                    </div>
+                    <div class="unitItem" data-unit="inch" data-unit-type="precip">
+                        <span>Inches (in)</span>
+                    </div>
+                </div>
             </div>
+        </div>
+
         </section>
     </header>
 
@@ -59,7 +90,8 @@
 
     <section class="searchSection">
         <div class="searchBar">
-            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <img src="assets/images/icon-search.svg" alt="">
             <input class="searchInput" placeholder="Search for a place..." >
         </div>
         
@@ -68,100 +100,107 @@
 
 
     <main class="mainLayout">
-        <div class="heroSection">
+
+        <div class="leftSide">
 
             <section class="card">
-                    
-                    <img src="../assets/images/bg-today-small.svg" alt="whether background ">
                     <div class="currentInfo">
                         <div class="locationBlock">
-                        <h2 class="placeName">Amman, Jordan</h2>
-                        <p  class="currentDate">Tuesday, Aug 5,2025</p>
+                        <h2 class="placeName"></h2>
+                        <p  class="currentDate"></p>
                     </div>
                     
                     <div class="tempBlock">
                         <img  class="sunIcon" src="assets/images/icon-sunny.webp" alt="sun icon">
-                        <span class="temperatureDegree">20°</span>
+                        <span class="temperatureDegree"></span>
                     </div>
                     
                 </div>
                 
             </section>
         
-        
-        
-        
-        <section class="metricsGrid">
-            
-            <div class="metricBox">
-                <p>Feels Like</p>
-                <span id="feelsLikeValue">18°</span>
-            </div>
             
             
-            <div class="metricBox">
-                <p>Humidity</p>
-                <span id="humidityValue">46%</span>
-            </div>
             
-            
-            <div class="metricBox">
-                <p>Wind</p>
-                <span id="windSpeedValue">14 km/h</span>
-            </div>
-            
-            
-            <div class="metricBox">
-                <p>Precipitation</p>
-                <span id="precipValue">0 mm</span>
-            </div>
-
-        </section>
-        
-    </div>
-        
-        
-        
-        <section class="dailyForecastSection">
-            
-            <h2 class="sectionTitle">Day Forecast</h2>
-
-            <div class="dailyRow">
-
-                <div class="dailyTemp">
-                    <p>Tue</p>
-                    <img src="" alt="Weather State img">
-                    <div class="dailyTemps">
-                        <span>20°</span>
-                        <span>14°</span>
-                    </div>
+            <section class="metricsGrid">
+                
+                <div class="metricBox">
+                    <p class="metricBoxTitles">Feels Like</p>
+                    <span class="metricBoxValues" id="feelsLikeValue">18°</span>
+                </div>
+                
+                
+                <div class="metricBox">
+                    <p class="metricBoxTitles">Humidity</p>
+                    <span class="metricBoxValues" id="humidityValue">46%</span>
+                </div>
+                
+                
+                <div class="metricBox">
+                    <p class="metricBoxTitles">Wind</p>
+                    <span class="metricBoxValues" id="windSpeedValue">14 km/h</span>
+                </div>
+                
+                
+                <div class="metricBox">
+                    <p class="metricBoxTitles">Precipitation</p>
+                    <span class="metricBoxValues" id="precipValue">0 mm</span>
                 </div>
 
-            </div>
+            </section>
+        
+        
+        
+        
+            <section class="dailyForecastSection">
+                
+                <h2 class="sectionTitle">Day Forecast</h2>
 
-        </section>
+                <div class="dailyRow">
+                    <!-- ------------------ADDING DAILY ROW------------------------ -->
+                </div>
 
+            </section>
 
+        </div>
 
-
-        <section class="hourlySection">
-            <div class="head">
-                <p class="sectionTitle">Hourly Forecast</p>    
-                <select  class="daySelect">
-                    <option value="thursday">thursday</option>
-                </select>
-            </div>
-
-            <div id="hourList" class="hourList">
-
-            </div>
-
-        </section>
+        <div class="rightSide">
 
 
+            <section class="hourlySection">
+                <div class="hourlySectionHead">
+                    <p class="sectionTitle">Hourly Forecast</p>    
 
+                    <div class="daySelectWrapper">
+                        <button class="daySelectBtn" id="daySelectBtn">
+                            <span id="selectedDayLabel">Today </span>
+                            <img src="assets/images/icon-dropdown.svg" alt="drop down icons"> 
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <ul class="daySelectList" id="daySelectList">
+                            <li class="dayOption active" id="dayMon">Monday</li>
+                            <li class="dayOption" id="dayTue">Tuesday</li>
+                            <li class="dayOption" id="dayWed">Wednesday</li>
+                            <li class="dayOption" id="dayThu">Thursday</li>
+                            <li class="dayOption" id="dayFri">Friday</li>
+                            <li class="dayOption" id="daySat">Saturday</li>
+                            <li class="dayOption" id="daySun">Sunday</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+                <section class="hourList">
+                    <!-- ------------------ADDING HOURLY COLUMN------------------------ -->
+                </section>
+            </section>
+
+        </div>
 
     </main>
+
+
 
 <script src="src/app.js" defer></script>
 </body>

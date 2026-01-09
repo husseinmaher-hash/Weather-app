@@ -1,37 +1,44 @@
-
 @import url('utility/fonts.css');
+@import url('header.css');
+@import url('search.css');
+@import url('weatherCard.css');
+@import url('dailySection.css');
+@import url('hourlySection.css');
 @import url('utility/responsive.css');
 
-:root{
-    --primaryColor : hsl(243, 23%, 30%);
-    --whiteColor : hsl(0, 0%, 100%);
 
+:root {
+    --primaryColor: hsl(243, 27%, 20%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --border-radius: 0.5rem;
+    --offPrimaryColor:hsl(240, 6%, 70%);
+    --secondaryColors: hsl(243, 23%, 30%) ; /*vpoder color*/
+    --neutral200: hsl(250, 6%, 84%);
     
-    --border-radius:0.5rem;
+    --neutral900: hsl(243, 96%, 9%);
+    --neutral800: hsl(243, 27%, 20%);
+    --neutral700: hsl(243, 23%, 24%);
+    --neutral300: hsl(240, 6%, 70%);
+    --neutral0: hsl(0, 0%, 100%);
 }
 
-body{
+
+body {
     color: var(--whiteColor);
     background: hsl(243, 96%, 9%);
     padding: 1rem;
     margin: 0;
 }
-.topBarWrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.topBar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.mainLayout {
+    margin-top: 2rem;
     max-width: 60rem;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.logo > img{
-    width: 9rem;
-}
+
+
 
 .title {
     display: flex;
@@ -48,153 +55,27 @@ body{
 }
 
 
-.searchSection {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
 
-.searchBar{
-    border-radius: var(--border-radius);
-    background: var(--primaryColor);
-    padding: 1rem;
-    display: flex;
-    width: 100%;
-    max-width: 30rem;
-}
 
-.searchInput{
-    background-color: var(--primaryColor);
-    border: none;
-    width: 100%;
-}
-.searchInput::placeholder{
-    color: hsl(250, 6%, 70%);
+
+
+.sectionTitle{
+    font-family: 'DM Sans';
     font-size: 1rem;
-    font-weight: 700;
-    
-}
-
-
-
-.searchBtn{
-    padding: 1rem;
-    font-size: 1rem;
-    color: var(--whiteColor);
-    background: hsl(233, 67%, 56%);
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    width: 100%;
-    max-width: 25rem;
-    font-weight: 500;
-}
-
-
-.mainLayout{
-    margin-top: 2rem;
-    background: red;
-}
-
-.heroSection{
-    background: magenta;
+    font-weight: 400;
 }
 
 
 
 
 
-.card {
-    position: relative;
-}
 
-.card > img {
-    width: 100%;
+
+.show {
     display: block;
 }
 
-.currentInfo {
-    display: grid;
-    justify-content: center;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
-    text-align: center;
 
-
-
-    color: var(--whiteColor);
-    z-index: 10;
-
-}
-
-.temperatureDegree{
-    font-size: 6rem;
-    font-weight: 600;
-}
-
-.sunIcon{
-    width: 8rem;;
-}
-
-
-
-
-
-
-
-
-
-.unitsSelect {
-    background-color: var(--primaryColor);
-    color: var(--whiteColor);
-    border: 1px solid bisque; 
-    border-radius: var(--border-radius);
-    height: 2.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    background-size: 1.5rem;
-    min-width: 8rem;
-}
-
-.unitsSelect > optgroup {
-    background: var(--primaryColor);
-    padding: 0.5rem;
-    font-size: 0.75rem;
-}
-
-.unitsSelect > option {
-    background: var(--primaryColor);
-    color: var(--whiteColor);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (min-width: 60rem) {
-    .searchBtn{
-        width: 5rem;
-    }
-    .logo > img{
-        width: 10rem;
-    }
+.active {
+    background: var(--secondaryColors);
 }
