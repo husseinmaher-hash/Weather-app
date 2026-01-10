@@ -53,5 +53,7 @@
         display: flex;
         gap: 2rem;
     }
-
+    .hourlySection{
+        margin-top:4rem;
+    }
 }

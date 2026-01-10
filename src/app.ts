@@ -116,7 +116,6 @@ function showCurrentCard(data: WeatherData, city: string) {
 function showDailyForecast(data: WeatherData) {
     dailyLoader.style.display = 'none';
     clearElement(dailyRow);
-    console.log(data.daily.time);
     
     data.daily.time.forEach((date, index) => {
         const div = document.createElement('div');
@@ -180,7 +179,6 @@ function updateUI(data: WeatherData, city: string) {
     showCurrentCard(data, city);
     showDailyForecast(data);
     showHourlyForecast(0);
-    console.log(Number.parseInt(data.daily.time[1]));
     
 }
 
@@ -243,9 +241,7 @@ dayOptions.forEach((options, index) => {
         dayOptions.forEach(o => o.classList.remove('active'));
         options.classList.add('active');
         selectedDayLabel.textContent = options.textContent;
-        showHourlyForecast(index);
-        console.log(index);
-        
+        showHourlyForecast(index);       
     });
 });
 
