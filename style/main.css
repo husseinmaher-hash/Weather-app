@@ -16,12 +16,6 @@
     --neutral200: hsl(250, 6%, 84%);
     
     --maxWidth:60rem;
-
-    --neutral900: hsl(243, 96%, 9%);
-    --neutral800: hsl(243, 27%, 20%);
-    --neutral700: hsl(243, 23%, 24%);
-    --neutral300: hsl(240, 6%, 70%);
-    --neutral0: hsl(0, 0%, 100%);
 }
 
 
@@ -34,7 +28,7 @@ body {
 
 .mainLayout {
     margin-top: 2rem;
-    max-width: 60rem;
+    max-width: var(--maxWidth);
     margin-left: auto;
     margin-right: auto;
 }
@@ -64,7 +58,6 @@ body {
 .sectionTitle{
     font-family: 'DM Sans';
     font-size: 1rem;
-    font-weight: 400;
 }
 
 
@@ -72,18 +65,18 @@ body {
 
 
 
-
+/*for drop down list*/
 .show {
     display: block;
 }
-
-
 .active {
     background: var(--secondaryColors);
 }
 
 
 
+
+/* for loader */
 .sectionLoader {
     display: flex;
     justify-content: center;
@@ -92,8 +85,7 @@ body {
 }
 
 .loadingIcon {
-    width: 40px;
-    height: 40px;
+    width: 2rem;
     animation: spin 1s linear infinite;
 }
 

@@ -1,16 +1,9 @@
-
-
 .mainLayout{
     margin-top: 2rem;
-
     display: grid;
     align-items: center;
     justify-content: center;
 }
-
-
-
-
 
 .card {
     background-image: url("../assets/images/bg-today-small.svg");
@@ -23,13 +16,11 @@
 }
 
 
-
 .currentInfo {
     display: grid;
     justify-content: center;
     text-align: center;
     color: var(--whiteColor);
-
 }
 
 .temperatureDegree{

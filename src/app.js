@@ -49,7 +49,7 @@ var resetUnitsBtn = document.getElementById('resetUnitsBtn');
 var unitItems = document.querySelectorAll('.unitItem');
 var dailyRow = document.querySelector('.dailyRow');
 var hourList = document.querySelector('.hourList');
-var daySelectBtn = document.getElementById('daySelectBtn');
+var daySelectBtn = document.querySelector('.daySelectBtn');
 var daySelectList = document.querySelector('.daySelectList');
 var dayOptions = document.querySelectorAll('.dayOption');
 var selectedDayLabel = document.getElementById('selectedDayLabel');
@@ -130,20 +130,22 @@ function showCurrentCard(data, city) {
 function showDailyForecast(data) {
     dailyLoader.style.display = 'none';
     clearElement(dailyRow);
-    data.daily.time.forEach(function (t, i) {
+    console.log(data.daily.time);
+    data.daily.time.forEach(function (date, index) {
         var div = document.createElement('div');
         div.className = 'dailyTemp';
         var p = document.createElement('p');
-        p.textContent = new Date(t).toLocaleDateString([], { weekday: 'short' });
+        p.className = 'dailyTempDay';
+        p.textContent = new Date(date).toLocaleDateString([], { weekday: 'short' });
         var img = document.createElement('img');
-        img.src = getWeatherIcon(data.daily.weather_code[i]);
+        img.src = getWeatherIcon(data.daily.weather_code[index]);
         img.className = 'dailyTempImage';
         var morningSpan = document.createElement('span');
         morningSpan.className = 'morningTemp';
-        morningSpan.textContent = "".concat(Math.round(data.daily.temperature_2m_min[i]), "\u00B0");
+        morningSpan.textContent = "".concat(Math.round(data.daily.temperature_2m_min[index]), "\u00B0");
         var nightSpan = document.createElement('span');
         nightSpan.className = 'nightTemp';
-        nightSpan.textContent = "".concat(Math.round(data.daily.temperature_2m_max[i]), "\u00B0");
+        nightSpan.textContent = "".concat(Math.round(data.daily.temperature_2m_max[index]), "\u00B0");
         var wrapper = document.createElement('div');
         wrapper.className = 'dailyTempValues';
         wrapper.append(morningSpan, nightSpan);
@@ -180,6 +182,7 @@ function updateUI(data, city) {
     showCurrentCard(data, city);
     showDailyForecast(data);
     showHourlyForecast(0);
+    console.log(Number.parseInt(data.daily.time[1]));
 }
 function displayWeatherForCity() {
     return __awaiter(this, void 0, void 0, function () {
@@ -252,6 +255,7 @@ dayOptions.forEach(function (options, index) {
         options.classList.add('active');
         selectedDayLabel.textContent = options.textContent;
         showHourlyForecast(index);
+        console.log(index);
     });
 });
 searchBtn.addEventListener('click', function () { return displayWeatherForCity(); });

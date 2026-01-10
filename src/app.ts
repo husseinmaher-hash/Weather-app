@@ -37,7 +37,7 @@ const resetUnitsBtn = document.getElementById('resetUnitsBtn') as HTMLButtonElem
 const unitItems = document.querySelectorAll('.unitItem') as NodeListOf<HTMLElement>;
 const dailyRow = document.querySelector('.dailyRow') as HTMLElement;
 const hourList = document.querySelector('.hourList') as HTMLElement;
-const daySelectBtn = document.getElementById('daySelectBtn') as HTMLButtonElement;
+const daySelectBtn = document.querySelector('.daySelectBtn') as HTMLButtonElement;
 const daySelectList = document.querySelector('.daySelectList') as HTMLElement;
 const dayOptions = document.querySelectorAll('.dayOption') as NodeListOf<HTMLElement>;
 const selectedDayLabel = document.getElementById('selectedDayLabel') as HTMLElement;
@@ -116,27 +116,30 @@ function showCurrentCard(data: WeatherData, city: string) {
 function showDailyForecast(data: WeatherData) {
     dailyLoader.style.display = 'none';
     clearElement(dailyRow);
-
-    data.daily.time.forEach((t, i) => {
+    console.log(data.daily.time);
+    
+    data.daily.time.forEach((date, index) => {
         const div = document.createElement('div');
         div.className = 'dailyTemp';
         const p = document.createElement('p');
-        p.textContent = new Date(t).toLocaleDateString([], { weekday: 'short' });
+        p.className = 'dailyTempDay';
+        p.textContent = new Date(date).toLocaleDateString([], { weekday: 'short' });
 
         const img = document.createElement('img');
-        img.src = getWeatherIcon(data.daily.weather_code[i]);
+        img.src = getWeatherIcon(data.daily.weather_code[index]);
         img.className = 'dailyTempImage';
 
         const morningSpan = document.createElement('span');
         morningSpan.className = 'morningTemp';
-        morningSpan.textContent = `${Math.round(data.daily.temperature_2m_min[i])}°`;
+        morningSpan.textContent = `${Math.round(data.daily.temperature_2m_min[index])}°`;
 
         const nightSpan = document.createElement('span');
         nightSpan.className = 'nightTemp';
-        nightSpan.textContent = `${Math.round(data.daily.temperature_2m_max[i])}°`;
+        nightSpan.textContent = `${Math.round(data.daily.temperature_2m_max[index])}°`;
 
         const wrapper = document.createElement('div');
         wrapper.className = 'dailyTempValues';
+    
         wrapper.append(morningSpan, nightSpan);
         div.append(p, img, wrapper);
         dailyRow.appendChild(div);
@@ -177,6 +180,8 @@ function updateUI(data: WeatherData, city: string) {
     showCurrentCard(data, city);
     showDailyForecast(data);
     showHourlyForecast(0);
+    console.log(Number.parseInt(data.daily.time[1]));
+    
 }
 
 async function displayWeatherForCity() {
@@ -239,6 +244,8 @@ dayOptions.forEach((options, index) => {
         options.classList.add('active');
         selectedDayLabel.textContent = options.textContent;
         showHourlyForecast(index);
+        console.log(index);
+        
     });
 });
 

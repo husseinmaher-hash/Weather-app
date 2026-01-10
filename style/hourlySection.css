@@ -4,7 +4,6 @@
     padding: 1.5rem;
     border-radius: var(--border-radius);
     min-width: 14rem;
-
 }
 
 .hourlySectionHead {
@@ -22,7 +21,7 @@
 .daySelectBtn {
     background: var(--secondaryColors);
     border: none;
-    padding: 0.7rem;
+    padding: 0.8rem;
     border-radius: var(--border-radius);
     color:var(--whiteColor);
     cursor: pointer;
