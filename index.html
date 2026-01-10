@@ -12,12 +12,7 @@
     <meta name="description" content="see the weather for all weeks ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-
-
-
-    <link rel="icon" href="data:,">
-    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
-    
+ 
 
 </head>
 
@@ -42,7 +37,7 @@
 
             <div class="unitsDropdown" id="unitsDropdown">
                 <div class="dropdownHeader">
-                    <button id="systemToggleBtn">Switch to Imperial</button>
+                    <button id="resetUnitsBtn">Switch to Imperial</button>
                 </div>
 
                 <div class="unitGroup">
@@ -104,20 +99,23 @@
         <div class="leftSide">
 
             <section class="card">
-                    <div class="currentInfo">
-                        <div class="locationBlock">
+                <div id="currentLoader" class="sectionLoader">
+                    <img src="assets/images/icon-loading.svg" alt="Loading..." class="loadingIcon">
+                </div>
+
+                <div class="currentInfo">
+                    <div class="locationBlock">
                         <h2 class="placeName"></h2>
-                        <p  class="currentDate"></p>
+                        <p class="currentDate"></p>
                     </div>
-                    
+
                     <div class="tempBlock">
-                        <img  class="sunIcon" src="assets/images/icon-sunny.webp" alt="sun icon">
+                        <img class="sunIcon" src="assets/images/icon-sunny.webp" alt="sun icon">
                         <span class="temperatureDegree"></span>
                     </div>
-                    
                 </div>
-                
             </section>
+
         
             
             
@@ -156,6 +154,10 @@
                 
                 <h2 class="sectionTitle">Day Forecast</h2>
 
+                <div id="dailyLoader" class="sectionLoader">
+                    <img src="assets/images/icon-loading.svg" alt="Loading..." class="loadingIcon">
+                </div>
+
                 <div class="dailyRow">
                     <!-- ------------------ADDING DAILY ROW------------------------ -->
                 </div>
@@ -178,19 +180,23 @@
                             <i class="fa-solid fa-chevron-down"></i>
                         </button>
 
-                        <ul class="daySelectList" id="daySelectList">
-                            <li class="dayOption active" id="dayMon">Monday</li>
-                            <li class="dayOption" id="dayTue">Tuesday</li>
-                            <li class="dayOption" id="dayWed">Wednesday</li>
-                            <li class="dayOption" id="dayThu">Thursday</li>
-                            <li class="dayOption" id="dayFri">Friday</li>
-                            <li class="dayOption" id="daySat">Saturday</li>
-                            <li class="dayOption" id="daySun">Sunday</li>
+                        <ul class="daySelectList">
+                            <li class="dayOption">Monday</li>
+                            <li class="dayOption">Tuesday</li>
+                            <li class="dayOption">Wednesday</li>
+                            <li class="dayOption">Thursday</li>
+                            <li class="dayOption">Friday</li>
+                            <li class="dayOption">Saturday</li>
+                            <li class="dayOption">Sunday</li>
                         </ul>
                     </div>
                     
                 </div>
 
+                <div id="hourlyLoader" class="sectionLoader">
+                    <img src="assets/images/icon-loading.svg" alt="Loading..." class="loadingIcon">
+                </div>
+                
                 <section class="hourList">
                     <!-- ------------------ADDING HOURLY COLUMN------------------------ -->
                 </section>

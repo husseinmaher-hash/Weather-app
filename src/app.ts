@@ -38,7 +38,7 @@ const unitItems = document.querySelectorAll('.unitItem') as NodeListOf<HTMLEleme
 const dailyRow = document.querySelector('.dailyRow') as HTMLElement;
 const hourList = document.querySelector('.hourList') as HTMLElement;
 const daySelectBtn = document.getElementById('daySelectBtn') as HTMLButtonElement;
-const daySelectList = document.getElementById('daySelectList') as HTMLElement;
+const daySelectList = document.querySelector('.daySelectList') as HTMLElement;
 const dayOptions = document.querySelectorAll('.dayOption') as NodeListOf<HTMLElement>;
 const selectedDayLabel = document.getElementById('selectedDayLabel') as HTMLElement;
 
@@ -190,7 +190,8 @@ async function displayWeatherForCity() {
     try {
         const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityInput)}&count=1&language=en&format=json`);
         const geo = await res.json();
-
+        
+        
         if (geo.results && geo.results.length > 0) {
             const result = geo.results[0];
             currentCity = `${result.name}, ${result.country}`;
@@ -231,13 +232,13 @@ unitItems.forEach(item => {
     });
 });
 
-// Event listeners for day selection
-dayOptions.forEach((opt, i) => {
-    opt.addEventListener('click', () => {
+
+dayOptions.forEach((options, index) => {
+    options.addEventListener('click', () => {
         dayOptions.forEach(o => o.classList.remove('active'));
-        opt.classList.add('active');
-        selectedDayLabel.textContent = opt.textContent;
-        showHourlyForecast(i);
+        options.classList.add('active');
+        selectedDayLabel.textContent = options.textContent;
+        showHourlyForecast(index);
     });
 });
 

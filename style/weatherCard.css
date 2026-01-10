@@ -57,7 +57,7 @@
     text-align: start;
 
 
-    border: 2px solid var(--Neutral600);
+    border: 0.09rem solid var(--offPrimaryColor); 
 }
 
 .metricBoxTitles{

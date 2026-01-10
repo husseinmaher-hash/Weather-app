@@ -40,6 +40,7 @@ var cachedWeatherData = null;
 var tempUnit = localStorage.getItem('tempUnit') || "celsius";
 var windUnit = localStorage.getItem('windUnit') || "kmh";
 var precipUnit = localStorage.getItem('precipUnit') || "mm";
+//elements
 var searchInput = document.querySelector('.searchInput');
 var searchBtn = document.querySelector('.searchBtn');
 var unitsToggleBtn = document.getElementById('unitsToggleBtn');
@@ -49,14 +50,13 @@ var unitItems = document.querySelectorAll('.unitItem');
 var dailyRow = document.querySelector('.dailyRow');
 var hourList = document.querySelector('.hourList');
 var daySelectBtn = document.getElementById('daySelectBtn');
-var daySelectList = document.getElementById('daySelectList');
+var daySelectList = document.querySelector('.daySelectList');
 var dayOptions = document.querySelectorAll('.dayOption');
 var selectedDayLabel = document.getElementById('selectedDayLabel');
 // Loader elements
 var currentLoader = document.getElementById('currentLoader');
 var dailyLoader = document.getElementById('dailyLoader');
 var hourlyLoader = document.getElementById('hourlyLoader');
-/* -------------------------------------------------------- */
 function getWeatherIcon(code) {
     var base = "assets/images/";
     if (code === 0)
@@ -75,7 +75,6 @@ function getWeatherIcon(code) {
         return base + "icon-storm.webp";
     return base + "icon-overcast.webp";
 }
-/* -------------------------------------------------------- */
 function clearElement(el) {
     while (el.firstChild)
         el.removeChild(el.firstChild);
@@ -182,7 +181,7 @@ function updateUI(data, city) {
     showDailyForecast(data);
     showHourlyForecast(0);
 }
-function handleSearch() {
+function displayWeatherForCity() {
     return __awaiter(this, void 0, void 0, function () {
         var cityInput, res, geo, result, weather, e_1;
         return __generator(this, function (_a) {
@@ -220,7 +219,6 @@ function handleSearch() {
         });
     });
 }
-// Event listeners for units
 resetUnitsBtn.addEventListener('click', function () {
     tempUnit = 'celsius';
     windUnit = 'kmh';
@@ -248,23 +246,30 @@ unitItems.forEach(function (item) {
             updateUI(cachedWeatherData, currentCity);
     });
 });
-// Event listeners for day selection
-dayOptions.forEach(function (opt, i) {
-    opt.addEventListener('click', function () {
+dayOptions.forEach(function (options, index) {
+    options.addEventListener('click', function () {
         dayOptions.forEach(function (o) { return o.classList.remove('active'); });
-        opt.classList.add('active');
-        selectedDayLabel.textContent = opt.textContent;
-        showHourlyForecast(i);
+        options.classList.add('active');
+        selectedDayLabel.textContent = options.textContent;
+        showHourlyForecast(index);
     });
 });
-// Search events
-searchBtn.addEventListener('click', function () { return handleSearch(); });
-searchInput.addEventListener('keydown', function (e) { if (e.key === 'Enter')
-    handleSearch(); });
-// Dropdown toggles
-unitsToggleBtn.addEventListener('click', function (e) { e.stopPropagation(); unitsDropdown.classList.toggle('show'); });
-daySelectBtn.addEventListener('click', function (e) { e.stopPropagation(); daySelectList.classList.toggle('show'); });
-document.addEventListener('click', function () { unitsDropdown.classList.remove('show'); daySelectList.classList.remove('show'); });
-// Initialize
+searchBtn.addEventListener('click', function () { return displayWeatherForCity(); });
+searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter')
+        displayWeatherForCity();
+});
+unitsToggleBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    unitsDropdown.classList.toggle('show');
+});
+daySelectBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    daySelectList.classList.toggle('show');
+});
+document.addEventListener('click', function () {
+    unitsDropdown.classList.remove('show');
+    daySelectList.classList.remove('show');
+});
 updateUnitsUI();
-handleSearch();
+displayWeatherForCity();

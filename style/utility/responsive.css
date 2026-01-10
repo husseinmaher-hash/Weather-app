@@ -20,6 +20,24 @@
     .dailyRow{
         grid-template-columns: repeat(5,minmax(2rem,1fr)) ;
     }
+
+
+    .currentInfo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem;
+    }
+    .locationBlock{
+        text-align: start;
+    }
+    .tempBlock{
+        display: flex;
+        align-items: center;
+    }
+    .temperatureDegree{
+        font-size: 5rem;
+    }
 }
 
 
@@ -35,4 +53,5 @@
         display: flex;
         gap: 2rem;
     }
+
 }
