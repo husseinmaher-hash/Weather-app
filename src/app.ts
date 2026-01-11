@@ -183,29 +183,45 @@ function updateUI(data: WeatherData, city: string) {
 }
 
 async function displayWeatherForCity() {
-    const cityInput = searchInput.value.trim() || currentCity;
+    let cityInput = searchInput.value.trim() || currentCity;
+    console.log('displayWeatherForCity:', cityInput);
 
-    // Show all loaders
     currentLoader.style.display = 'flex';
     dailyLoader.style.display = 'flex';
     hourlyLoader.style.display = 'flex';
 
     try {
-        const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityInput)}&count=1&language=en&format=json`);
+        const res = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityInput)}&count=1&language=en&format=json`,
+            { signal: AbortSignal.timeout(5000) }
+        );
+
         const geo = await res.json();
-        
-        
+
         if (geo.results && geo.results.length > 0) {
             const result = geo.results[0];
             currentCity = `${result.name}, ${result.country}`;
 
             const weather = await fetchWeather(result.latitude, result.longitude);
             updateUI(weather, currentCity);
+        } else {
+            console.log('No results found for', cityInput);
+            alert('This city not found ')
+            if (cityInput !== currentCity) {
+                searchInput.value = "";
+                await displayWeatherForCity();
+            }
         }
-    } catch (e) {
-        console.error(e);
+
+    } catch (e: any) {
+        alert(`Failed to fetch weather for "${cityInput}". Showing weather for "${currentCity}".`);
+        if (cityInput !== currentCity) {
+            searchInput.value = "";
+            await displayWeatherForCity();
+        }
     }
 }
+
 
 resetUnitsBtn.addEventListener('click', () => {
     tempUnit = 'celsius';
@@ -230,8 +246,12 @@ unitItems.forEach(item => {
 
         localStorage.setItem(type + 'Unit', unit);
         updateUnitsUI();
-
+        
+        console.log(cachedWeatherData);
+        
+        
         if (cachedWeatherData) updateUI(cachedWeatherData, currentCity);
+        displayWeatherForCity()
     });
 });
 

@@ -189,14 +189,14 @@ function displayWeatherForCity() {
             switch (_a.label) {
                 case 0:
                     cityInput = searchInput.value.trim() || currentCity;
-                    // Show all loaders
+                    console.log('displayWeatherForCity:', cityInput);
                     currentLoader.style.display = 'flex';
                     dailyLoader.style.display = 'flex';
                     hourlyLoader.style.display = 'flex';
                     _a.label = 1;
                 case 1:
-                    _a.trys.push([1, 6, , 7]);
-                    return [4 /*yield*/, fetch("https://geocoding-api.open-meteo.com/v1/search?name=".concat(encodeURIComponent(cityInput), "&count=1&language=en&format=json"))];
+                    _a.trys.push([1, 8, , 11]);
+                    return [4 /*yield*/, fetch("https://geocoding-api.open-meteo.com/v1/search?name=".concat(encodeURIComponent(cityInput), "&count=1&language=en&format=json"), { signal: AbortSignal.timeout(5000) })];
                 case 2:
                     res = _a.sent();
                     return [4 /*yield*/, res.json()];
@@ -209,13 +209,28 @@ function displayWeatherForCity() {
                 case 4:
                     weather = _a.sent();
                     updateUI(weather, currentCity);
-                    _a.label = 5;
-                case 5: return [3 /*break*/, 7];
-                case 6:
-                    e_1 = _a.sent();
-                    console.error(e_1);
                     return [3 /*break*/, 7];
-                case 7: return [2 /*return*/];
+                case 5:
+                    console.log('No results found for', cityInput);
+                    alert('This city not found ');
+                    if (!(cityInput !== currentCity)) return [3 /*break*/, 7];
+                    searchInput.value = "";
+                    return [4 /*yield*/, displayWeatherForCity()];
+                case 6:
+                    _a.sent();
+                    _a.label = 7;
+                case 7: return [3 /*break*/, 11];
+                case 8:
+                    e_1 = _a.sent();
+                    alert("Failed to fetch weather for \"".concat(cityInput, "\". Showing weather for \"").concat(currentCity, "\"."));
+                    if (!(cityInput !== currentCity)) return [3 /*break*/, 10];
+                    searchInput.value = "";
+                    return [4 /*yield*/, displayWeatherForCity()];
+                case 9:
+                    _a.sent();
+                    _a.label = 10;
+                case 10: return [3 /*break*/, 11];
+                case 11: return [2 /*return*/];
             }
         });
     });
@@ -243,8 +258,10 @@ unitItems.forEach(function (item) {
             precipUnit = unit;
         localStorage.setItem(type + 'Unit', unit);
         updateUnitsUI();
+        console.log(cachedWeatherData);
         if (cachedWeatherData)
             updateUI(cachedWeatherData, currentCity);
+        displayWeatherForCity();
     });
 });
 dayOptions.forEach(function (options, index) {
