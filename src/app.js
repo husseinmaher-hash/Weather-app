@@ -130,7 +130,6 @@ function showCurrentCard(data, city) {
 function showDailyForecast(data) {
     dailyLoader.style.display = 'none';
     clearElement(dailyRow);
-    console.log(data.daily.time);
     data.daily.time.forEach(function (date, index) {
         var div = document.createElement('div');
         div.className = 'dailyTemp';
@@ -182,7 +181,6 @@ function updateUI(data, city) {
     showCurrentCard(data, city);
     showDailyForecast(data);
     showHourlyForecast(0);
-    console.log(Number.parseInt(data.daily.time[1]));
 }
 function displayWeatherForCity() {
     return __awaiter(this, void 0, void 0, function () {
@@ -255,7 +253,6 @@ dayOptions.forEach(function (options, index) {
         options.classList.add('active');
         selectedDayLabel.textContent = options.textContent;
         showHourlyForecast(index);
-        console.log(index);
     });
 });
 searchBtn.addEventListener('click', function () { return displayWeatherForCity(); });

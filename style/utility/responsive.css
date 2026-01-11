@@ -49,6 +49,10 @@
     .dailyRow{
         grid-template-columns: repeat(7,minmax(2rem,1fr)) ;
     }
+    .dailyTemp{
+        margin: 0.2rem;
+
+    }
     .mainLayout{
         display: flex;
         gap: 2rem;
